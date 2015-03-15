@@ -1,1 +1,3 @@
-# coding-test
+# Coding Test
+
+## Problem Specification
