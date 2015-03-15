@@ -1,5 +1,5 @@
 SOURCES=$(wildcard src/*.cpp)
-TARGET=coding_test
+TARGET=test_scheduler
 
 CPPFLAGS += -MD -MP
 CXXFLAGS += -Wall -Wpedantic -std=c++11
