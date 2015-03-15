@@ -7,6 +7,8 @@
 #include "job.h"
 #include "node.h"
 
+// Simple first-come, first-served scheduler
+
 class Scheduler {
  public:
   Scheduler(void) : assigned_(0), waited_(0) {}
@@ -17,17 +19,17 @@ class Scheduler {
   void PrintNodeStatus(void) const;
   void PrintResourcesStatus(void) const;
   double GetAvgWaitTime(void) const;
-  void ScheduleFCFS(void);  // Simple first-come, first-served scheduler
   void Step(void);
   int assigned(void) const {return assigned_;}
   
- private:
+ protected:
   std::list<Job> jobs_;  // Using list to add and remove jobs in constant time
   std::vector<Node> nodes_;
   std::unordered_map<int, int> resources_; // available resources
   int assigned_;  // number of assigned jobs
   int waited_;  // number of steps that jobs waited
 
+  virtual void Schedule(void);  // Simple first-come, first-served scheduler  
   int FindSmallestAvailableNode(int req_resources) const;
 };
 

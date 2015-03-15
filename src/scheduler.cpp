@@ -1,8 +1,6 @@
 #include "scheduler.h"
 #include <cstdio>
 
-using std::vector;
-
 void Scheduler::AddJob(int resources, int time) {
   jobs_.emplace_back(resources, time);
 }
@@ -41,7 +39,7 @@ void Scheduler::PrintResourcesStatus(void) const {
 }
 
 // Simple first-come, first-served scheduler
-void Scheduler::ScheduleFCFS(void) {
+void Scheduler::Schedule(void) {
   for (auto it = jobs_.begin(); it != jobs_.end();) {
     int job_resources = it->resources();
     int assigned_node = FindSmallestAvailableNode(job_resources);
@@ -76,7 +74,7 @@ int Scheduler::FindSmallestAvailableNode(int req_resources) const {
 }
 
 void Scheduler::Step(void) {
-  ScheduleFCFS();
+  Schedule();
   for (auto &job : jobs_) job.IncreaseWaited();
   waited_ += jobs_.size();
 }
