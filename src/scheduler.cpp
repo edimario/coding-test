@@ -13,19 +13,6 @@ void Scheduler::PrintJobStatus(void) const {
   printf("\n");
 }
 
-void Scheduler::AddNode(int id, int resources) {
-  nodes_.emplace_back(id, resources);
-}
-
-void Scheduler::PrintNodeStatus(void) const {
-  printf("Available nodes: ");
-  for (const auto &node : nodes_) {
-    printf("(%d %d %d %d)", node.id(), node.resources(),
-           node.occupied_resources(), node.time_left());
-  }
-  printf("\n");
-}
-
 void Scheduler::AddResources(int id, int resources) {
   resources_[id] += resources;
 }

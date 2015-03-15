@@ -5,7 +5,6 @@
 #include <list>
 #include <unordered_map>
 #include "job.h"
-#include "node.h"
 
 // Simple first-come, first-served scheduler
 
@@ -16,7 +15,6 @@ class Scheduler {
   void AddNode(int id, int resources);
   void AddResources(int id, int resources);  
   void PrintJobStatus(void) const;
-  void PrintNodeStatus(void) const;
   void PrintResourcesStatus(void) const;
   double GetAvgWaitTime(void) const;
   void Step(void);
@@ -24,7 +22,6 @@ class Scheduler {
   
  protected:
   std::list<Job> jobs_;  // Using list to add and remove jobs in constant time
-  std::vector<Node> nodes_;
   std::unordered_map<int, int> resources_; // available resources
   int assigned_;  // number of assigned jobs
   int waited_;  // number of steps that jobs waited
